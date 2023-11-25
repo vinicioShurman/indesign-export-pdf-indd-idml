@@ -1,2 +1,2 @@
-# indesign-export-pdf-indd-idml
- 
+# Bot auto export .pdf, .indd and . idml in InDesign
+
