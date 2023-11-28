@@ -36,21 +36,21 @@ def play_mp3(file_path):
 
 def find_export_pdf_1():
     try:
-        return pyautogui.locateOnScreen('export-pdf-1.png', grayscale=True, confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/export-pdf-1.png', grayscale=True, confidence=0.8) 
     except Exception as e:
         print(f"Erro ao encontrar janela de exportar pdf do Windows: {e}")
         return False
 
 def find_export_pdf_2():
     try:
-        return pyautogui.locateOnScreen('export-pdf-2.png', grayscale=True, confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/export-pdf-2.png', grayscale=True, confidence=0.8) 
     except Exception as e:
         print(f"Erro ao encontrar janela de exportar pdf do InDesign: {e}")
         return False
 
 def find_save_as_idml():
     try:
-        return pyautogui.locateOnScreen('save-as-idml-1.png', grayscale=True, confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/save-as-idml-1.png', grayscale=True, confidence=0.8) 
     except Exception as e:
         print(f"Erro ao encontrar janela de salvar idml do InDesign: {e}")
         return False
@@ -60,7 +60,7 @@ def find_missing_fonts_window():
         # Call print_middle to get the coordinates
         x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height = print_middle()
 
-        return pyautogui.locateOnScreen('missing-fonts.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), grayscale=True, confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/missing-fonts.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), grayscale=True, confidence=0.8) 
     except Exception as e:
         print(f'Janela "Missing fonts" não encontrada. {e}')
         return False
@@ -70,7 +70,7 @@ def find_missing_links_window():
         # Call print_middle to get the coordinates
         x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height = print_middle()
 
-        return pyautogui.locateOnScreen('missing-links.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), grayscale=True, confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/missing-links.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), grayscale=True, confidence=0.8) 
     except Exception as e:
         print(f'Janela "Missing links" não encontrada. {e}')
         return False
@@ -80,7 +80,7 @@ def find_replace_file_window():
         # Call print_middle to get the coordinates
         x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height = print_middle()
 
-        return pyautogui.locateOnScreen('replace-file-window.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/replace-file-window.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), confidence=0.8) 
     except Exception as e:
         print(f"Erro ao encontrar janela de substituição de arquivo. {e}")
         return False
@@ -90,7 +90,7 @@ def find_new_file_button():
         # Call print_right to get the coordinates
         x_pixel_width, y_pixel_height = print_right()
 
-        return pyautogui.locateOnScreen('new-file.png', region=(0, 0, x_pixel_width, y_pixel_height), confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/new-file.png', region=(0, 0, x_pixel_width, y_pixel_height), confidence=0.8) 
     except Exception as e:
         print(f"find_new_file_button() {e}")
         return False  
@@ -100,14 +100,14 @@ def find_export_file():
         # Call print_left to get the coordinates
         x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height = print_left()
 
-        return pyautogui.locateOnScreen('exporting.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), grayscale=True, confidence=0.8) 
+        return pyautogui.locateOnScreen('imgs/exporting.png', region=(x_pixel_start, y_pixel_start, x_pixel_width, y_pixel_height), grayscale=True, confidence=0.8) 
     except Exception as e:
         print(f"Continuando para o próximo passo. {e}")
         return False
 
 def find_generating_pdf():
     try:
-        return pyautogui.locateOnScreen('exporting-interactive.png', confidence=0.95) 
+        return pyautogui.locateOnScreen('imgs/exporting-interactive.png', confidence=0.95) 
     except Exception as e:
         print(f"Continuando para o próximo passo. {e}")
         return False  
@@ -184,7 +184,7 @@ y_pixel = int(y_percentage * screen_height)
 while keyboard.is_pressed('q') == False:
     if find_new_file_button() != False:
         print("Arquivos salvos.")
-        play_mp3('among-us-task-complete.mp3')
+        play_mp3('sounds/among-us-task-complete.mp3')
         break
     # Press the keys Ctrl+0
     press_key('ctrl+0')
@@ -206,7 +206,7 @@ while keyboard.is_pressed('q') == False:
         # If Ctrl+E does not appear in 15 sec then close the program
         if counter == 15:
             print("Falha no ctrl+E, fechando o programa.")
-            play_mp3('windows-xp-error-sound.mp3')
+            play_mp3('sounds/windows-xp-error-sound.mp3')
             break
         else:
             print("Falha no ctrl+E, tentando de novo. Fechando o programa em: ", 15 - counter)
@@ -222,7 +222,7 @@ while keyboard.is_pressed('q') == False:
         time.sleep(0.4)
     else:
         print("Falha no ctrl+E, fechando o programa.")
-        play_mp3('windows-xp-error-sound.mp3')
+        play_mp3('sounds/windows-xp-error-sound.mp3')
         break
 
     # Check if "want to replace file" windows appear
@@ -246,7 +246,7 @@ while keyboard.is_pressed('q') == False:
         # If InDesign export window does not appear in 5 sec then close the program
         if counter == 15:
             print("Falha na janela de exportação do InDesign. Fechando o programa.")
-            play_mp3('windows-xp-error-sound.mp3')
+            play_mp3('sounds/windows-xp-error-sound.mp3')
             break
         else:
             print("Falha na janela de exportação do InDesign. Fechando o programa em:", 15 - counter)
@@ -263,7 +263,7 @@ while keyboard.is_pressed('q') == False:
     # Checks if fonts are missing
     if find_missing_fonts_window() != False:
         print("Fontes faltando. Fechando o programa.")
-        play_mp3('windows-xp-error-sound.mp3')
+        play_mp3('sounds/windows-xp-error-sound.mp3')
         break
     
     # Wait a bit
@@ -272,7 +272,7 @@ while keyboard.is_pressed('q') == False:
     # Checks if links are missing
     if find_missing_links_window() != False:
         print("Links faltando. Fechando o programa.")
-        play_mp3('windows-xp-error-sound.mp3')
+        play_mp3('sounds/windows-xp-error-sound.mp3')
         break
     
     # Wait a bit
@@ -315,7 +315,7 @@ while keyboard.is_pressed('q') == False:
         # If Ctrl+Shift+S does not appear in 5 sec then close the program
         if counter == 15:
             print("Falha no Ctrl+Shift+S, fechando o programa.")
-            play_mp3('windows-xp-error-sound.mp3')
+            play_mp3('sounds/windows-xp-error-sound.mp3')
             break
         else:
             print('Falha na janela de "Save As" do InDesign. Fechando o programa em: ', 15 - counter)
